@@ -16,9 +16,10 @@ const o_std = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 });
 
 //GSI Pale
-var imageUrl = 'https://archive.org/download/dbrein_tt_n/dbrein_tt_n.png',
-    imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544], [48.804828, 2.240524], [48.802793, 2.478447]];
-L.imageOverlay(imageUrl, imageBounds).addTo(map);
+const t_pale = new L.imageOverlay('https://archive.org/download/dbrein_tt_n/dbrein_tt_n.png', {
+    attribution:
+        "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
+});
 
 //GSI Ort
 const t_ort = new L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
@@ -43,9 +44,9 @@ const Map_BaseLayer = {
 //AddLayer
 const Map_AddLayer = {
     'OSM': o_std,
-  'imageUrl': imageUrl
+    'GSI Pale': t_pale,
+    'GSI Ort': t_ort,
 };
-
 
 //LayerControl
 L.control
@@ -57,13 +58,6 @@ L.control
 //OpacityControl
 L.control
     .opacity(Map_AddLayer, {
-        label: 'Layers Opacity',
-    })
-    .addTo(map);
-
-//imgOpacityControl
-L.control
-    .opacity(img_AddLayer, {
         label: 'Layers Opacity',
     })
     .addTo(map);
