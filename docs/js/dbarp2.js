@@ -64,9 +64,3 @@ L.control
         label: 'Layers Opacity',
     })
     .addTo(map);
-    //Specify the layer for which you want to modify the opacity. Note that the setOpacityLayer() method applies to all the controls.
-    //You only need to call it once. 
-        opacitySlider.setOpacityLayer(Map_AddLayer);
-        
-    //Set initial opacity to 0.5 (Map_AddLayer)
-        paris.setOpacity(0.5);
