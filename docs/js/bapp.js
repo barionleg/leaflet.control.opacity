@@ -51,7 +51,7 @@ const Map_AddLayer = {
 //LayerControl
 L.control
     .layers(Map_BaseLayer, Map_AddLayer, {
-        collapsed: trua,
+        collapsed: true,
     })
     .addTo(map);
 
