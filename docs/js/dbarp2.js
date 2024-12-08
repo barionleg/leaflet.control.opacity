@@ -49,8 +49,6 @@ const Map_BaseLayer = {
 //AddLayer
 const Map_AddLayer = {
     'OSM': o_std,
-    'GSI Pale': t_pale,
-    'GSI Ort': t_ort,
 };
 
 //LayerControl
@@ -66,3 +64,9 @@ L.control
         label: 'Layers Opacity',
     })
     .addTo(map);
+    //Specify the layer for which you want to modify the opacity. Note that the setOpacityLayer() method applies to all the controls.
+    //You only need to call it once. 
+        opacitySlider.setOpacityLayer(Map_AddLayer);
+        
+    //Set initial opacity to 0.5 (Map_AddLayer)
+        paris.setOpacity(0.5);
