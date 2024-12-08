@@ -16,10 +16,15 @@ const o_std = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 });
 
 //GSI Pale
-const t_pale = new L.tileLayer('https://archive.org/download/dbrein_tt_n/dbrein_tt_n.png', {
-    attribution:
-        "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>",
-});
+var t_pale = ('https://archive.org/download/dbrein_tt_n/dbrein_tt_n.png', 
+                 imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+                 L.imageOverlay(t_pale, imageBounds).addTo(map);
+		{
+            layers: 't_pale',
+            maxZoom: 18,
+            format: 'image/png',
+            transparent: true
+        });	
 
 //GSI Ort
 // Create & add WMS-layer.
@@ -29,7 +34,7 @@ var t_ort = new L.TileLayer.WMS('http://demo.opengeo.org/geoserver/wms', {
   transparent: true,
   version: '1.3.0',
   crs: L.CRS.EPSG4807
-}).addTo(map);
+        });
 
 //MAP
 const map = L.map('map', {
