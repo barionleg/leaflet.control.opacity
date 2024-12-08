@@ -24,6 +24,12 @@ const map = L.map('map', {
     layers: [m_mono],
 });
 
+//BaseLayer
+const Map_BaseLayer = {
+    'MIERUNE Color': m_color,
+    'MIERUNE MONO': m_mono,
+};
+
 //AddLayer
 const Map_AddLayer = {
     'OSM': o_std,
