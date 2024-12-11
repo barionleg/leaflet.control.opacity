@@ -21,15 +21,6 @@
 
     var basemaps = [];
 
-    for (var key in baseMapNames) {
-      if (baseMapNames.hasOwnProperty(key)) {
-
-      var id = baseMapNames[key].id;
-      var path = baseMapNames[key].path;
-
-       basemaps.push(layer);
-      }
-    }
 
 	// base map selector control
 	mymap.addControl(L.control.basemaps({
