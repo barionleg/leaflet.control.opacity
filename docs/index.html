@@ -14,6 +14,51 @@
     </head>
     <body>
         <div id="map"></div>
+  <!-- # own list of for basemaps -->
+  <script src=../src/basemaplist.js"></script>
+
+  <script>
+	var mymap = L.map('map').setView([40.706213526877455,-74.0044641494751 ], 13);
+
+    var basemaps = [];
+
+    for (var key in baseMapNames) {
+      if (baseMapNames.hasOwnProperty(key)) {
+
+      var id = baseMapNames[key].id;
+      var path = baseMapNames[key].path;
+
+      layer = L.tileLayer('/'+id+'/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), {
+	        attribution:'&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/about-carto/">'+id+'</a>',
+	        subdomains: 'abcd',
+	        maxZoom: 20,
+	        minZoom: 0,
+	        label: id
+	    });
+
+       basemaps.push(layer);
+      }
+    }
+
+	// base map selector control
+	mymap.addControl(L.control.basemaps({
+	    basemaps: basemaps,
+	    tileX: 0,  // tile X coordinate
+	    tileY: 0,  // tile Y coordinate
+	    tileZ: 1   // tile zoom level
+	}));
+
+	// Mapbox search
+	token = "pk.eyJ1IjoiY2FydG8tdGVhbSIsImEiOiJjamNseTlwMG0wZjBoMzRsZzZyaHFlYWE1In0.Qpl_GcsePTbb20IAe5QEKg";
+	var options = { geocoder: L.Control.Geocoder.mapbox(token) };
+	L.Control.geocoder(options).addTo(mymap);
+
+	// # permalinks
+    var hash = new L.Hash(mymap);
+
+	</script>
+
+        
         <script src="js/bapp.js"></script>
     </body>
 </html>
