@@ -17,7 +17,7 @@ const o_std = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
 
 //GSI Pale
 //const t_pale = new L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-const t_pale = new L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+const t_pale = new L.tileLayer('https://{s}.basemaps.cartocdn.com/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attribution">CARTO</a>'
   }).addTo(map);
 
