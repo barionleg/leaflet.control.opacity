@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="https://barionleg.github.io/ABC_ub_particles/images/taviconit.png" type="image/x-icon" />
+    <title>Leaflet.DistortableImage Example</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="../dist/vendor.css">
+    <link rel="stylesheet" href="../dist/leaflet.distortableimage.css" media="screen" title="no title">
+
+    <script src="../node_modules/leaflet/dist/leaflet.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../dist/vendor.js"></script>
+    <script src="../dist/leaflet.distortableimage.js"></script>
+
+        <script src="./js/list.js" defer></script>
+
+	<script src="https://aibolem.github.io/Leaflet.OpacityControls/lib/opacity/Control.Opacity.js"></script>
+	<link href="https://aibolem.github.io/Leaflet.OpacityControls/lib/opacity/Control.Opacity.css" rel="stylesheet" />
+	      <script src="https://aibolem.github.io/Leaflet.OpacityControls/lib/jquery/jquery-1.9.1.js"></script>
+    <script src="https://aibolem.github.io/Leaflet.OpacityControls/lib/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+    <link rel="stylesheet" href="https://aibolem.github.io/Leaflet.OpacityControls/lib/jquery/jquery-ui-1.10.3.custom.min.css" />
+    
+    
+    <style type="text/css">
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        
+        #map {
+            width: 99%;
+            height: 100%; 
+        }
+       
+     </style>
+</head>
+  <body style="margin:0;">
+
+    <form id="test_form" >
+      <input type="file" class="ldi" id="inputimage" accept="image/*">
+    </form>
+
+	<div id="map"></div>
+
+	<script type="text/JavaScript">       
+    //Create the map
+       
+        var map = new L.map('map', {
+            center: new L.LatLng(48.856301, 2.321205), 
+            zoom: 12,
+            layers: [paris],
+            zoomControl: true
+        });
+
+		// add image layer
+
+	var paris = ('https://archive.org/download/dbrein_tt_n/dbrein_tt_n.png', 
+                 imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+                 L.imageOverlay(paris, imageBounds).addTo(map);
+		{
+            layers: 'paris',
+            maxZoom: 18,
+            format: 'image/png',
+            transparent: true
+        });		
+
+
+    //Create the opacity controls
+        var higherOpacity = new L.Control.higherOpacity();
+        map.addControl(higherOpacity);
+        var lowerOpacity = new L.Control.lowerOpacity();
+        map.addControl(lowerOpacity);
+        var opacitySlider = new L.Control.opacitySlider();
+        map.addControl(opacitySlider);
+    
+    //Specify the layer for which you want to modify the opacity. Note that the setOpacityLayer() method applies to all the controls.
+    //You only need to call it once. 
+        opacitySlider.setOpacityLayer(paris);
+        
+    //Set initial opacity to 0.5 (Optional)
+        paris.setOpacity(0.5);
+	</script>
+  </body>
+</html>
