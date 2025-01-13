@@ -20,10 +20,18 @@
 
 		var positron = L.tileLayer('https://heatmap-external-a.strava.com/tiles/water/blue/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Map tiles by <a href=\"https://labs.strava.com/heatmap\">Strava 2021</a>',
+			            "html_attribution": "Map tiles by <a href=\"https://labs.strava.com/heatmap\">Strava 2021</a>",
+            "name": "Strava.Winter"
+    },
+    "SwissFederalGeoportal": {
+        "NationalMapColor": {
+            "url": "https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg",
+            "html_attribution": "<a target=\"_blank\" href=\"https://www.swisstopo.admin.ch/\">swisstopo</a>",
+            "attribution": "© swisstopo",
 			maxNativeZoom: 18,
 			maxZoom:24
 		}).addTo(map);
-    
+     },
 		var point1 = L.latLng(45.483795, 36.545858),
 		    point2 = L.latLng(45.483795, 50.646254),
 		    point3 = L.latLng(40.263377, 36.545858);
